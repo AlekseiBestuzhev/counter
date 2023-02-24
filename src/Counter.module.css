@@ -1,0 +1,43 @@
+.counterBody {
+	padding: 10px;
+	border: 3px solid #27ddbe;
+	border-radius: 10px;
+	max-width: 400px;
+}
+
+.counterDisplay {
+	background-color: #27ddbe;
+	color: #282b36;
+	font-size: 50px;
+	font-weight: 900;
+	padding: 15px 0;
+	text-align: center;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+
+.counterButtons {
+	border: 3px solid #27ddbe;
+	padding: 15px;
+	border-radius: 10px;
+	display: flex;
+	column-gap: 15px;
+}
+
+.button {
+	padding: 10px 20px;
+	font-weight: 600;
+	color: #282b36;
+	background-color: #27ddbe;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button:disabled {
+	opacity: 0.5;
+}
+
+.red {
+	color: rgb(255, 30, 86);
+}
