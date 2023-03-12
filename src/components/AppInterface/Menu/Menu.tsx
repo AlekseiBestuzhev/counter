@@ -2,8 +2,14 @@ import c from 'components/AppInterface/Menu/Menu.module.css';
 import closeIcon from 'close.svg';
 import { NavLink } from 'react-router-dom';
 import { PATH } from '../Pages/Pages';
+import { FC } from 'react';
 
-export const Menu = () => {
+type MenuType = {
+	setMenuClose: () => void,
+	open: boolean
+}
+
+export const Menu: FC<MenuType> = ({ setMenuClose, open }) => {
 
 	return (
 		<div className={c.menu}>
