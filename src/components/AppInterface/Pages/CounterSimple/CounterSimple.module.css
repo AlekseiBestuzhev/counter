@@ -24,20 +24,6 @@
 	column-gap: 15px;
 }
 
-.button {
-	padding: 10px 20px;
-	font-weight: 600;
-	color: #282b36;
-	background-color: #27ddbe;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-}
-
-.button:disabled {
-	opacity: 0.5;
-}
-
 .red {
 	color: rgb(255, 30, 86);
 }
