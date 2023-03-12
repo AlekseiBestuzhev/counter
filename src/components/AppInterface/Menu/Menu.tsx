@@ -11,26 +11,42 @@ type MenuType = {
 
 export const Menu: FC<MenuType> = ({ setMenuClose, open }) => {
 
+	const menuClasses = open ? `${c.menu} ${c.open}` : c.menu;
+
 	return (
-		<div className={c.menu}>
-			<img
-				src={closeIcon}
-				alt="Close icon"
-			/>
-			<nav className={c.navigation}>
-				<NavLink
-					to={PATH.BASIC_COUNTER}>
-					Basic Counter
-				</NavLink>
-				<NavLink
-					to={PATH.SETABLE_COUNTER_V1}>
-					Setable Counter v1
-				</NavLink>
-				<NavLink
-					to={PATH.SETABLE_COUNTER_V2}>
-					Setable Counter v2
-				</NavLink>
-			</nav>
-		</div>
+		<>
+			{open && <div className={c.dark} onClick={setMenuClose}></div>}
+			<div className={menuClasses}>
+				<img
+					src={closeIcon}
+					alt="Close icon"
+					onClick={setMenuClose}
+					className={c.burgerMenuClose}
+				/>
+				<nav className={c.navigation}>
+					<NavLink
+						onClick={setMenuClose}
+						to={PATH.BASIC_COUNTER}
+						className={({ isActive }) => isActive ? c.active : ''}
+					>
+						Basic Counter
+					</NavLink>
+					<NavLink
+						onClick={setMenuClose}
+						to={PATH.SETABLE_COUNTER_V1}
+						className={({ isActive }) => isActive ? c.active : ''}
+					>
+						Setable Counter v1
+					</NavLink>
+					<NavLink
+						onClick={setMenuClose}
+						to={PATH.SETABLE_COUNTER_V2}
+						className={({ isActive }) => isActive ? c.active : ''}
+					>
+						Setable Counter v2
+					</NavLink>
+				</nav>
+			</div>
+		</>
 	);
 }

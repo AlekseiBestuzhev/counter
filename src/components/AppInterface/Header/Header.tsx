@@ -13,6 +13,7 @@ export const Header: FC<HeaderType> = ({ setMenuOpen }) => {
 			<img
 				src={menuIcon}
 				alt="Menu icon"
+				onClick={setMenuOpen}
 				className={c.burgerMenuOpen}
 			/>
 			<h1 className={c.title}>Title</h1>
