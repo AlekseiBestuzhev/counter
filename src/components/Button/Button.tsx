@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import c from './Button.module.css'
+import c from 'components/Button/Button.module.css'
 
 type ButtonType = {
 	children: React.ReactNode,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../../../Button/Button';
-import c from './CounterSimple.module.css'
+import { Button } from 'components/Button/Button';
+import c from 'components/AppInterface/Pages/CounterSimple/CounterSimple.module.css'
 
 export const Counter = () => {
 

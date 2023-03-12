@@ -1,5 +1,5 @@
 import './App.css';
-import { Counter } from './components/AppInterface/Pages/CounterSimple/CounterSimple';
+import { Counter } from 'components/AppInterface/Pages/CounterSimple/CounterSimple';
 
 function App() {
 	return (
