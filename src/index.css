@@ -5,13 +5,13 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: #282b36;
-	width: 100%;
-	min-height: 100vh;
-	display: grid;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+
+* {
+	box-sizing: border-box;
 }

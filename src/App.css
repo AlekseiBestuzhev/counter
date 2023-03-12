@@ -1,6 +1,9 @@
-.App {
+body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background-color: #282b36;
+	width: 100%;
+	min-height: 100vh;
 }
