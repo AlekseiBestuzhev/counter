@@ -1,13 +1,13 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
+import { Pages } from 'components/AppInterface/Pages/Pages';
 import { AppInterface } from 'components/AppInterface/AppInterface';
-import { Counter } from 'components/AppInterface/Pages/CounterSimple/CounterSimple';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<AppInterface>
-				<Counter />
+				<Pages />
 			</AppInterface>
 		</BrowserRouter>
 	);

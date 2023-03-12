@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button } from 'components/Button/Button';
-import c from 'components/AppInterface/Pages/CounterSimple/CounterSimple.module.css'
+import c from 'components/AppInterface/Pages/BasicCounter/BasicCounter.module.css'
 
-export const Counter = () => {
+export const BasicCounter = () => {
 
 	const minValue = 0;
 	const maxValue = 5;
