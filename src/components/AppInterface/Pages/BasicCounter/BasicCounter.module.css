@@ -16,6 +16,17 @@
 	margin-bottom: 15px;
 }
 
+.displaySetting {
+	border: 3px solid #27ddbe;
+	width: 181px;
+	height: 97px;
+	color: #27ddbe;
+	border-radius: 10px;
+	padding: 20px 10px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
 .counterButtons {
 	border: 3px solid #27ddbe;
 	padding: 15px;
