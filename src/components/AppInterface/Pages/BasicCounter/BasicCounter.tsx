@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
 import c from 'components/AppInterface/Pages/BasicCounter/BasicCounter.module.css'
 
@@ -23,6 +23,10 @@ export const BasicCounter: FC<BasicCounterType> = (props) => {
 
 	const increaseCount = () => setCount(count => count + 1);
 	const resetCount = () => setCount(minValue);
+
+	useEffect(() => {
+		setCount(minValue);
+	}, [minValue])
 
 	const incDisabled = count === maxValue || setting;
 	const resetDisabled = count === minValue || setting;

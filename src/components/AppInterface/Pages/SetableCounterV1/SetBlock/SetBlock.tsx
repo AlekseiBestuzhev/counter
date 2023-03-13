@@ -14,12 +14,8 @@ export const SetBlock: FC<SetBlockType> = (props) => {
 	const [minValue, setMinValue] = useState<number>(0);
 	const [maxValue, setMaxValue] = useState<number>(5);
 
-	const changeCurrentValueHandler = () => {
-		props.editModeActivator();
-	}
-
 	const acceptSettingsHandler = () => {
-		props.acceptSettings(3, 9);
+		props.acceptSettings(minValue, maxValue);
 	}
 
 	const isDisabled = !props.editMode;
@@ -30,12 +26,14 @@ export const SetBlock: FC<SetBlockType> = (props) => {
 				<Input
 					title={'max'}
 					currentValue={maxValue}
-					changeCurrentValue={changeCurrentValueHandler}
+					setValue={setMaxValue}
+					modeOn={props.editModeActivator}
 				/>
 				<Input
 					title={'min'}
 					currentValue={minValue}
-					changeCurrentValue={changeCurrentValueHandler}
+					setValue={setMinValue}
+					modeOn={props.editModeActivator}
 				/>
 			</div>
 			<div className={c.counterButtons}>
