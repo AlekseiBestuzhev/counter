@@ -11,21 +11,32 @@ type SetBlockType = {
 	acceptSettings: (min: number, max: number) => void
 }
 
-export const SetBlock: FC<SetBlockType> = (props) => {
+export const SetBlock: FC<SetBlockType> = (
+	{
+		error,
+		editMode,
+		editModeActivator,
+		errorHandler,
+		acceptSettings
+	}
+) => {
 
 	const [minValue, setMinValue] = useState<number>(0);
 	const [maxValue, setMaxValue] = useState<number>(5);
 
 	const acceptSettingsHandler = () => {
-		props.acceptSettings(minValue, maxValue);
+		acceptSettings(minValue, maxValue);
 	}
 
+	const invalidValues = minValue >= maxValue;
+	const belowZero = minValue < 0;
+
 	const errorObserver = () => {
-		if (minValue >= maxValue || minValue < 0) {
-			props.errorHandler(true);
+		if (invalidValues || belowZero) {
+			errorHandler(true);
 		}
 		else {
-			props.errorHandler(false);
+			errorHandler(false);
 		}
 	}
 
@@ -33,22 +44,24 @@ export const SetBlock: FC<SetBlockType> = (props) => {
 		errorObserver();
 	}, [minValue, maxValue])
 
-	const isDisabled = !props.editMode || props.error;
+	const isDisabled = !editMode || error;
 
 	return (
 		<div className={c.counterBody}>
 			<div className={c.displaySetting}>
 				<Input
 					title={'max'}
-					currentValue={maxValue}
 					setValue={setMaxValue}
-					modeOn={props.editModeActivator}
+					currentValue={maxValue}
+					modeOn={editModeActivator}
+					invalidValues={invalidValues}
 				/>
 				<Input
 					title={'min'}
-					currentValue={minValue}
 					setValue={setMinValue}
-					modeOn={props.editModeActivator}
+					currentValue={minValue}
+					modeOn={editModeActivator}
+					invalidValues={invalidValues}
 				/>
 			</div>
 			<div className={c.counterButtons}>

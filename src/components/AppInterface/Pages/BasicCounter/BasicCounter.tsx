@@ -9,13 +9,14 @@ type BasicCounterType = {
 	editMode?: boolean
 }
 
-export const BasicCounter: FC<BasicCounterType> = (props) => {
-
-	const {
+export const BasicCounter: FC<BasicCounterType> = (
+	{
 		min,
 		max,
 		error,
-		editMode } = props;
+		editMode
+	}
+) => {
 
 	const minValue = min ? min : 0;
 	const maxValue = max ? max : 5;
@@ -52,10 +53,16 @@ export const BasicCounter: FC<BasicCounterType> = (props) => {
 			<div className={c.counterButtons}>
 				<Button
 					disabled={incDisabled}
-					callback={increaseCount}>inc</Button>
+					callback={increaseCount}
+				>
+					inc
+				</Button>
 				<Button
 					disabled={resetDisabled}
-					callback={resetCount}>reset</Button>
+					callback={resetCount}
+				>
+					reset
+				</Button>
 			</div>
 		</div>
 	);
