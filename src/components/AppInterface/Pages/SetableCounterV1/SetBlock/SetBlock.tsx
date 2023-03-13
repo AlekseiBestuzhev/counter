@@ -30,6 +30,7 @@ export const SetBlock: FC<SetBlockType> = (
 
 	const invalidValues = minValue >= maxValue;
 	const belowZero = minValue < 0;
+	const isDisabled = !editMode || error;
 
 	const errorObserver = () => {
 		if (invalidValues || belowZero) {
@@ -44,7 +45,22 @@ export const SetBlock: FC<SetBlockType> = (
 		errorObserver();
 	}, [minValue, maxValue])
 
-	const isDisabled = !editMode || error;
+	useEffect(() => {
+		const minValueFromLS = localStorage.getItem('v1-min');
+		const maxValueFromLS = localStorage.getItem('v1-max');
+		if (minValueFromLS && maxValueFromLS) {
+			const minLS = JSON.parse(minValueFromLS)
+			setMinValue(minLS);
+			const maxLS = JSON.parse(maxValueFromLS);
+			setMaxValue(maxLS);
+			acceptSettings(minLS, maxLS);
+		}
+	}, [])
+
+	useEffect(() => {
+		localStorage.setItem('v1-min', JSON.stringify(minValue));
+		localStorage.setItem('v1-max', JSON.stringify(maxValue));
+	}, [minValue, maxValue]);
 
 	return (
 		<div className={c.counterBody}>
