@@ -1,0 +1,26 @@
+.displaySetting {
+	border: 3px solid #27ddbe;
+	width: 181px;
+	height: 97px;
+	color: #27ddbe;
+	border-radius: 10px;
+	padding: 15px;
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.counterBody {
+	padding: 10px;
+	border: 3px solid #27ddbe;
+	border-radius: 10px;
+	max-width: 400px;
+}
+
+.counterButtons {
+	border: 3px solid #27ddbe;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+}

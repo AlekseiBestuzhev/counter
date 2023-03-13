@@ -1,0 +1,13 @@
+.inputGroup {
+	display: flex;
+	justify-content: space-between;
+}
+
+.label {
+	color: #27ddbe;
+	margin-right: auto;
+}
+
+.input {
+	width: 50px;
+}
