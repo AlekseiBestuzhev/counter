@@ -5,7 +5,7 @@ import c from 'components/AppInterface/Pages/BasicCounter/BasicCounter.module.cs
 type BasicCounterType = {
 	min?: number,
 	max?: number,
-	settingMode?: boolean
+	editMode?: boolean
 }
 
 export const BasicCounter: FC<BasicCounterType> = (props) => {
@@ -13,11 +13,11 @@ export const BasicCounter: FC<BasicCounterType> = (props) => {
 	const {
 		min,
 		max,
-		settingMode } = props;
+		editMode } = props;
 
 	const minValue = min ? min : 0;
 	const maxValue = max ? max : 5;
-	const setting = settingMode ? settingMode : false;
+	const setting = editMode ? editMode : false;
 
 	const [count, setCount] = useState<number>(minValue);
 
@@ -32,7 +32,7 @@ export const BasicCounter: FC<BasicCounterType> = (props) => {
 	return (
 		<div className={c.counterBody}>
 			{
-				settingMode
+				editMode
 					? <div className={c.displaySetting}>Enter values and press 'set'</div>
 					: <div className={displayStyle}>{count}</div>
 			}

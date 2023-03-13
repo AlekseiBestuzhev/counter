@@ -2,10 +2,12 @@ import c from 'components/AppInterface/Pages/SetableCounterV1/SetBlock/Input/Inp
 import { FC } from 'react';
 
 type InputType = {
-	title: string
+	title: string,
+	currentValue: number,
+	changeCurrentValue: () => void
 }
 
-export const Input: FC<InputType> = ({ title }) => {
+export const Input: FC<InputType> = ({ title, currentValue, changeCurrentValue }) => {
 
 	return (
 		<div className={c.inputGroup}>
@@ -13,6 +15,8 @@ export const Input: FC<InputType> = ({ title }) => {
 			<input
 				type="number"
 				className={c.input}
+				value={currentValue}
+				onChange={changeCurrentValue}
 			/>
 		</div >
 	);
