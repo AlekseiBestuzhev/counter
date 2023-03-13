@@ -1,11 +1,13 @@
 import { Button } from "components/Button/Button";
 import c from 'components/AppInterface/Pages/SetableCounterV1/SetBlock/SetBlock.module.css';
 import { Input } from "./Input/Input";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 type SetBlockType = {
+	error: boolean,
 	editMode: boolean,
 	editModeActivator: () => void,
+	errorHandler: (err: boolean) => void,
 	acceptSettings: (min: number, max: number) => void
 }
 
@@ -18,7 +20,20 @@ export const SetBlock: FC<SetBlockType> = (props) => {
 		props.acceptSettings(minValue, maxValue);
 	}
 
-	const isDisabled = !props.editMode;
+	const errorObserver = () => {
+		if (minValue >= maxValue || minValue < 0) {
+			props.errorHandler(true);
+		}
+		else {
+			props.errorHandler(false);
+		}
+	}
+
+	useEffect(() => {
+		errorObserver();
+	}, [minValue, maxValue])
+
+	const isDisabled = !props.editMode || props.error;
 
 	return (
 		<div className={c.counterBody}>
