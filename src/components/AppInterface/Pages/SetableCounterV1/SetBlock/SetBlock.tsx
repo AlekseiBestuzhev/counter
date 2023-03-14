@@ -9,8 +9,9 @@ type SetBlockType = {
 	error: boolean,
 	editMode: boolean,
 	editModeActivator: () => void,
+	editModeDeactivator: () => void,
 	errorHandler: (err: boolean) => void,
-	acceptSettings: (min: number, max: number) => void
+	getSettings: (min: number, max: number) => void
 }
 
 export const SetBlock: FC<SetBlockType> = (
@@ -18,8 +19,9 @@ export const SetBlock: FC<SetBlockType> = (
 		error,
 		editMode,
 		editModeActivator,
+		editModeDeactivator,
 		errorHandler,
-		acceptSettings
+		getSettings
 	}
 ) => {
 
@@ -27,7 +29,8 @@ export const SetBlock: FC<SetBlockType> = (
 	const [maxValue, setMaxValue] = useState<number>(5);
 
 	const acceptSettingsHandler = () => {
-		acceptSettings(minValue, maxValue);
+		getSettings(minValue, maxValue);
+		editModeDeactivator();
 	}
 
 	const invalidValues = minValue >= maxValue;
@@ -63,7 +66,7 @@ export const SetBlock: FC<SetBlockType> = (
 			setMinValue(minLS);
 			const maxLS = JSON.parse(maxValueFromLS);
 			setMaxValue(maxLS);
-			acceptSettings(minLS, maxLS);
+			getSettings(minLS, maxLS);
 		}
 	}, [])
 

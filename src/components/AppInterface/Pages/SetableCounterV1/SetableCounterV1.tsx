@@ -12,13 +12,13 @@ export const SetableCounterV1 = () => {
 	const [error, setError] = useState<boolean>(false);
 
 	const editModeActivator = () => setEditMode(true);
+	const editModeDeactivator = () => setEditMode(false);
 
 	const errorHandler = (err: boolean) => setError(err);
 
-	const acceptSettings = (min: number, max: number) => {
+	const getSettings = (min: number, max: number) => {
 		setMinValue(min);
 		setMaxValue(max);
-		setEditMode(false);
 	}
 
 	return (
@@ -27,8 +27,9 @@ export const SetableCounterV1 = () => {
 				error={error}
 				editMode={editMode}
 				errorHandler={errorHandler}
-				acceptSettings={acceptSettings}
+				getSettings={getSettings}
 				editModeActivator={editModeActivator}
+				editModeDeactivator={editModeDeactivator}
 			/>
 			<BasicCounter
 				min={minValue}
