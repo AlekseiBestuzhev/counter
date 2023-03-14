@@ -2,6 +2,8 @@ import { Button } from "components/Button/Button";
 import c from 'components/AppInterface/Pages/SetableCounterV1/SetBlock/SetBlock.module.css';
 import { Input } from "./Input/Input";
 import { FC, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { PATH } from "../../Pages";
 
 type SetBlockType = {
 	error: boolean,
@@ -45,9 +47,17 @@ export const SetBlock: FC<SetBlockType> = (
 		errorObserver();
 	}, [minValue, maxValue])
 
+	const location = useLocation();
+	const currentPath = location.pathname;
+	const pageForLS = currentPath === PATH.SETABLE_COUNTER_V1
+		? 'v1'
+		: currentPath === PATH.SETABLE_COUNTER_V2
+			? 'v2'
+			: ''
+
 	useEffect(() => {
-		const minValueFromLS = localStorage.getItem('v1-min');
-		const maxValueFromLS = localStorage.getItem('v1-max');
+		const minValueFromLS = localStorage.getItem(`${pageForLS}-min`);
+		const maxValueFromLS = localStorage.getItem(`${pageForLS}-max`);
 		if (minValueFromLS && maxValueFromLS) {
 			const minLS = JSON.parse(minValueFromLS)
 			setMinValue(minLS);
@@ -58,8 +68,8 @@ export const SetBlock: FC<SetBlockType> = (
 	}, [])
 
 	useEffect(() => {
-		localStorage.setItem('v1-min', JSON.stringify(minValue));
-		localStorage.setItem('v1-max', JSON.stringify(maxValue));
+		localStorage.setItem(`${pageForLS}-min`, JSON.stringify(minValue));
+		localStorage.setItem(`${pageForLS}-max`, JSON.stringify(maxValue));
 	}, [minValue, maxValue]);
 
 	return (
